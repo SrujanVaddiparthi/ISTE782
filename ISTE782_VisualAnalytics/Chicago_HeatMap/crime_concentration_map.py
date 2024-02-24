@@ -30,8 +30,8 @@ highlight_ward_numbers = [3, 46, 1, 25, 34]
 for idx, row in merged_data.iterrows():
     ward_number = row['ward']
     centroid = row['geometry'].centroid
-    color = 'green' if ward_number in highlight_ward_numbers else 'black'
-    ax.text(centroid.x, centroid.y, str(ward_number), fontsize=8, ha='center', va='center', color=color)
+    color = 'blue' if ward_number in highlight_ward_numbers else 'black'
+    ax.text(centroid.x, centroid.y, str(ward_number), fontsize=10, ha='center', va='center', color=color, weight='bold')
 
 plt.title('Crime Concentration Heatmap by Ward')
 plt.show()

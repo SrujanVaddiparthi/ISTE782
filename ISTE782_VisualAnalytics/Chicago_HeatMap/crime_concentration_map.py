@@ -25,6 +25,7 @@ merged_data.plot(column='Crime_Concentration', cmap='Reds', linewidth=0.8, ax=ax
 
 # Defining the ward numbers selected with special highlighting
 highlight_ward_numbers = [3, 46, 1, 25, 34]
+urban_core = [42]
 
 # Add ward numbers to the center of each ward
 for idx, row in merged_data.iterrows():
@@ -33,6 +34,10 @@ for idx, row in merged_data.iterrows():
     color = 'blue' if ward_number in highlight_ward_numbers else 'black'
     fontsize = 12 if ward_number in highlight_ward_numbers else 8
     ax.text(centroid.x, centroid.y, str(ward_number), fontsize=fontsize, ha='center', va='center', color=color, weight='bold')
+    
+# Highlight ward number 42 with white color
+centroid_42 = merged_data[merged_data['ward'] == 42]['geometry'].centroid.values[0]
+ax.text(centroid_42.x, centroid_42.y, '42', fontsize=12, ha='center', va='center', color='white', weight='bold')
 
 plt.title('Crime Concentration Heatmap by Ward')
 plt.show()

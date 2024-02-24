@@ -1,25 +1,3 @@
-# import geopandas as gpd
-# import pandas as pd 
-# import matplotlib.pyplot as plt 
-
-
-# #Loading the GeoJSON data of Chicago wards
-# wards = gpd.read_file("/Users/wangtiles/ISTE782/ISTE782_VisualAnalytics/Chicago_HeatMap/ward_boundaries.geojson")
-
-# #Loading crime concentraion data at ward level from excel
-# crime_data = pd.read_excel("/Users/wangtiles/ISTE782/ISTE782_VisualAnalytics/Chicago_HeatMap/crime_conc_ward.xlsx")
-
-# #merging crim concentraion data with ward boundaries
-# wards_with_crime = wards.merge(crime_data, on = "Ward", how = "left")
-
-# #Plot wards colored by crime concentraion
-# fig, ax = plt.subplots(figsize = (10,8))
-# wards_with_crime.plot(column = "Crime_Concentraion", cmap = "Reds", ax = ax, legend = True)
-# ax.set_title("Chicago wards by Crime Concentraion")
-# plt.show()
-
-
-
 # Step 1: Import libraries
 import geopandas as gpd
 import pandas as pd
@@ -31,6 +9,22 @@ crime_data = pd.read_excel("/Users/wangtiles/ISTE782/ISTE782_VisualAnalytics/Chi
 # Step 3: Load GeoJSON file
 geojson_file = "/Users/wangtiles/ISTE782/ISTE782_VisualAnalytics/Chicago_HeatMap/ward_boundaries.geojson"
 geo_data = gpd.read_file(geojson_file)
+
+# Checking for datatypes of 'ward' column in geo_data and 'Ward' column in crime_data
+print("Data type of 'ward' column in geo_data:", geo_data['ward'].dtype)
+print("Data type of 'Ward' column in crime_data:", crime_data['Ward'].dtype)
+
+# Convert 'ward' column in geo_data to string
+geo_data['ward'] = geo_data['ward'].astype('str')
+
+# Convert 'Ward' column in crime_data to string
+crime_data['Ward'] = crime_data['Ward'].astype('str')
+
+# Convert 'ward' column in geo_data to int64
+geo_data['ward'] = geo_data['ward'].astype('int64')
+
+# Convert 'Ward' column in crime_data to int64
+crime_data['Ward'] = crime_data['Ward'].astype('int64')
 
 # Step 4: Merge crime data with GeoDataFrame
 merged_data = geo_data.merge(crime_data, how='left', left_on='ward', right_on='Ward')

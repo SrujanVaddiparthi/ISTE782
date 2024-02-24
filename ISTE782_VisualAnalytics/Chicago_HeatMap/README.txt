@@ -3,7 +3,11 @@ https://github.com/lilyli/chicago-ward-demographics/tree/master.
 
 
 
+Google Sheet link containing Statistical Analysis Working:
+https://docs.google.com/spreadsheets/d/1wum9NmxHCsRATpfOfA0rtLH4o29aKDirPgrSUcbOFFo/edit#gid=2129019598
 
+Link to the final Report:
+https://docs.google.com/document/d/16Bp2kCYn4_GBaNc8TsCUCCNyoTkxyTdGBp2iIVLxDGI/edit?usp=sharing
 
 
 
